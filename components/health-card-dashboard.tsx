@@ -105,7 +105,16 @@ export function HealthCardDashboard() {
 
             <div className="text-right text-xs md:text-sm hidden sm:block">
               <p className="text-gray-600">Scanned At</p>
-              <p className="font-semibold text-gray-900">25 May 2025, 10:32 AM</p>
+              <p className="font-semibold text-gray-900">
+  {new Date().toLocaleString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  })}
+</p>
             </div>
 
             {/* <button className="p-2 hover:bg-gray-100 rounded-lg flex-shrink-0 ml-auto sm:ml-0">
@@ -335,7 +344,8 @@ export function HealthCardDashboard() {
                 ))}
               </div>
               <button  className="w-full mt-3 md:mt-4 text-teal-700 font-semibold text-xs md:text-sm flex items-center justify-between hover:text-teal-800">
-                <span>View All Conditions</span>
+                      <Link
+  href="/doctor/Conditions">View All Conditions</Link>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -357,7 +367,8 @@ export function HealthCardDashboard() {
                 ))}
               </div>
               <button className="w-full mt-3 md:mt-4 text-green-600 font-semibold text-xs md:text-sm flex items-center justify-between hover:text-green-700">
-                <span>View All Medications</span>
+                       <Link
+  href="/doctor/Medications">View All Medications</Link>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -380,7 +391,8 @@ export function HealthCardDashboard() {
                 <p className="text-xs text-gray-600 pl-4 md:pl-6">No other known allergies</p>
               </div>
               <button className="w-full mt-3 md:mt-4 text-red-500 font-semibold text-xs md:text-sm flex items-center justify-between hover:text-red-600">
-                <span>View All Allergies</span>
+                       <Link
+  href="/doctor/Allergies">View All Allergies</Link>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -416,7 +428,8 @@ export function HealthCardDashboard() {
                 </div>
               </div>
               <button className="w-full mt-3 md:mt-4 text-teal-700 font-semibold text-xs md:text-sm flex items-center justify-between hover:text-teal-800">
-                <span>View All Vitals</span>
+                <Link
+  href="/doctor/Vitals">View All Vitals</Link>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -433,7 +446,10 @@ export function HealthCardDashboard() {
                   </div>
                   <h3 className="font-bold text-gray-900 text-sm md:text-base">Recent Lab Reports</h3>
                 </div>
+                <Link
+  href="/doctor/Reports">
                 <button className="text-blue-600 font-semibold text-xs md:text-sm hover:text-blue-700 text-left">View All</button>
+                </Link>
               </div>
               <div className="space-y-2 md:space-y-3">
                 {labReports.map((report, idx) => (
@@ -454,7 +470,10 @@ export function HealthCardDashboard() {
                   </div>
                   <h3 className="font-bold text-gray-900 text-sm md:text-base">Recent Prescriptions</h3>
                 </div>
+                <Link
+  href="/doctor/RecentPrescriptions">
                 <button className="text-purple-600 font-semibold text-xs md:text-sm hover:text-purple-700 text-left">View All</button>
+                </Link>
               </div>
               <div className="space-y-2 md:space-y-3">
                 {prescriptions.map((prescription, idx) => (
@@ -478,7 +497,10 @@ export function HealthCardDashboard() {
                   </div>
                   <h3 className="font-bold text-gray-900 text-sm md:text-base">Immunization</h3>
                 </div>
+                <Link
+  href="/doctor/immunization">
                 <button className="text-orange-600 font-semibold text-xs md:text-sm hover:text-orange-700 text-left">View All</button>
+                </Link>
               </div>
               <div className="space-y-2 md:space-y-3">
                 {immunizations.map((imm, idx) => (
@@ -499,7 +521,10 @@ export function HealthCardDashboard() {
                   </div>
                   <h3 className="font-bold text-gray-900 text-sm md:text-base">Visit History</h3>
                 </div>
+                 <Link
+  href="/doctor/history">
                 <button className="text-green-600 font-semibold text-xs md:text-sm hover:text-green-700 text-left">View All</button>
+                </Link>
               </div>
               <div className="space-y-2 md:space-y-3">
                 {visitHistory.map((visit, idx) => (

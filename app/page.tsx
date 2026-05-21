@@ -1,20 +1,23 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { DoctorCardScanner } from '@/components/doctor-card-scanner'
-import { HealthCardDashboard } from '@/components/health-card-dashboard'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { DoctorCardScanner } from "@/components/doctor-card-scanner";
 
 export default function Page() {
-  const [cardScanned, setCardScanned] = useState(false)
+  const router = useRouter();
+  const [cardScanned, setCardScanned] = useState(false);
+
+  const handleCardScanned = () => {
+    setCardScanned(true);
+    router.push("/doctor/overview");
+  };
 
   return (
     <>
-       {!cardScanned ? (
-        <DoctorCardScanner onCardScanned={() => setCardScanned(true)} />
-      ) : (
-        <HealthCardDashboard />
-      )} 
-      {/* <HealthCardDashboard /> */}
+      {!cardScanned && (
+        <DoctorCardScanner onCardScanned={handleCardScanned} />
+      )}
     </>
-  )
+  );
 }

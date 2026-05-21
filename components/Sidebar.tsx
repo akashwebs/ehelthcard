@@ -9,7 +9,7 @@ function Sidebar() {
  const pathname = usePathname();
 
     const menuItems = [
-  { icon: "👤", label: "Patient Overview", href: "/" },
+  { icon: "👤", label: "Patient Overview", href: "/doctor/overview" },
   { icon: "📋", label: "Medical History", href: "/doctor/medical-history" },
   { icon: "💊", label: "Prescriptions", href: "/doctor/prescriptions" },
   { icon: "🧬", label: "Lab Reports", href: "/doctor/lab-reports" },
