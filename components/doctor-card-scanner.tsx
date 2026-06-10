@@ -12,77 +12,17 @@ interface DoctorCardScannerProps {
 export function DoctorCardScanner({ onCardScanned }: DoctorCardScannerProps) {
   const [isScanning, setIsScanning] = useState(false)
   const [scanComplete, setScanComplete] = useState(false)
+ 
 
-  const handleScan = async () => {
-    setIsScanning(true)
-    // Simulate NFC/Card scan delay
-    setTimeout(() => {
-      setIsScanning(false)
-      setScanComplete(true)
-      // Trigger callback after animation
-      setTimeout(() => {
-        onCardScanned()
-      }, 1500)
-    }, 2000)
-  }
 
-useEffect(() => {
-  const init = async () => {
-    await handleScan();
-  };
+  
 
-  init();
-}, []);
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
       {/* Mobile Overlay */}
     {/* Verification Overlay */}
-{isScanning && (
-  <div className="fixed inset-0 bg-black/30 backdrop-blur-md z-50 flex items-center justify-center px-4">
 
-    <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 text-center border border-emerald-100">
-
-      {/* Logo */}
-      <div className="w-20 h-20 rounded-full bg-emerald-50 border border-emerald-200 mx-auto flex items-center justify-center mb-6">
-        <img src="/logo.png" alt="" className="w-12 h-12" />
-      </div>
-
-      {/* Loader */}
-      <div className="flex justify-center mb-6">
-        <div className="relative w-16 h-16">
-
-          <div className="absolute inset-0 rounded-full border-4 border-emerald-100"></div>
-
-          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-emerald-700 animate-spin"></div>
-
-        </div>
-      </div>
-
-      <h2 className="text-xl md:text-2xl font-bold text-slate-800">
-        Card Verify করা হচ্ছে
-      </h2>
-
-      <p className="text-slate-500 mt-3 leading-7 text-sm">
-        অনুগ্রহ করে অপেক্ষা করুন...
-        <br />
-        রোগীর Smart e-Health Card যাচাই করা হচ্ছে
-      </p>
-
-      <div className="mt-6 bg-emerald-50 border border-emerald-100 rounded-xl p-3">
-        <p className="text-xs text-emerald-700 font-medium">
-          Government of the People's Republic of Bangladesh
-        </p>
-
-        <p className="text-[11px] text-slate-500 mt-1">
-          Ministry of Health & Family Welfare
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-)}
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="mb-8 text-center">
@@ -138,8 +78,7 @@ useEffect(() => {
 
             {/* Scan Button */}
             <Button
-              onClick={handleScan}
-              disabled={isScanning || scanComplete}
+             
               className="w-full py-6 text-lg font-semibold bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white disabled:opacity-50 transition-all"
             >
               {isScanning ? 'Scanning...' : scanComplete ? 'Card Scanned ✓' : 'Scan Patient Card'}

@@ -1,27 +1,24 @@
-import { notFound } from "next/navigation";
-import { HealthCardDashboard } from "@/components/Qr-health-card-dashboard";
+import DoctorProfileVerify from "../../../../components/DoctorCardScanner";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 export default async function Page({ params }) {
-  const { id } = await params; // <-- await দিতে হবে
+  const { id } = await params;
 
-  const res = await fetch(
-    `${API_BASE}/pa-profile/qr-view/${id}`,
-    {
+  let profile = null;
+
+  if (id && API_BASE) {
+    const res = await fetch(`${API_BASE}/pa-profile/qr-view/${id}`, {
       cache: "no-store",
-    }
-  );
+    });
 
-  const result = await res.json();
+    const result = await res.json().catch(() => null);
 
-  if (!res.ok || result.status !== "success") {
-    notFound();
+    profile =
+      res.ok && result?.status === "success" && result?.data
+        ? result.data
+        : null;
   }
 
-  return (
-    <HealthCardDashboard
-      profile={result.data}
-    />
-  );
+  return <DoctorProfileVerify profile={profile} cardId={id} />;
 }
